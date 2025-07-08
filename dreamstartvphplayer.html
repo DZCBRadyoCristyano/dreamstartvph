@@ -12,16 +12,21 @@
       height: 100%;
       width: 100%;
       background: #000;
-      overflow: hidden;
+    }
+
+    #player-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
     }
 
     #player-container {
-      position: relative;
+      flex: 1;
       width: 100%;
-      height: 100vh;
     }
 
-    /* LIVE badge */
     .live-badge {
       position: absolute;
       top: 10px;
@@ -38,7 +43,7 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.5);
     }
 
-    /* Hide all buttons except volume and fullscreen */
+    /* JW controls customization */
     .jw-button-container .jw-icon:not(.jw-icon-volume):not(.jw-icon-fullscreen) {
       display: none !important;
     }
@@ -73,12 +78,13 @@
   </style>
 </head>
 <body>
-  <div id="player-container">
+  <div id="player-wrapper">
     <div class="live-badge">LIVE</div>
+    <div id="player-container"></div>
   </div>
 
   <script>
-    const player = jwplayer("player-container").setup({
+    jwplayer("player-container").setup({
       file: "https://0fj.cc/DTMMBSTV",
       type: "hls",
       width: "100%",
@@ -88,12 +94,12 @@
       displaytitle: true,
       title: "DREAMSTAR TV",
       controls: true,
-      stretching: "uniform", // Prevents zoom/crop
+      stretching: "uniform",
       abouttext: "DREAMSTAR TV",
       aboutlink: "https://dreamstartv.online"
     });
 
-    // Disable keyboard shortcuts (optional)
+    // Optional: Disable keyboard shortcuts
     document.addEventListener('keydown', function (e) {
       e.stopPropagation();
     }, true);
