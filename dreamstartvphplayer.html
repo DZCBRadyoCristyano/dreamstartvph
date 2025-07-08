@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DREAMSTAR TV</title>
+  <script src="https://cdn.jwplayer.com/libraries/IDzF9Zmk.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #player-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* LIVE badge */
+    .live-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: red;
+      color: white;
+      font-weight: bold;
+      font-family: sans-serif;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      z-index: 9999;
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+
+    /* Hide all buttons except volume and fullscreen */
+    .jw-button-container .jw-icon:not(.jw-icon-volume):not(.jw-icon-fullscreen) {
+      display: none !important;
+    }
+
+    .jw-icon-picture-in-picture {
+      display: none !important;
+    }
+
+    .jw-controlbar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+    }
+
+    .jw-button-container {
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .jw-controlbar-left .jw-icon-volume {
+      display: inline-flex !important;
+    }
+
+    .jw-controlbar-right .jw-icon-fullscreen {
+      display: inline-flex !important;
+    }
+
+    .jw-controlbar-left .jw-icon:not(.jw-icon-volume),
+    .jw-controlbar-right .jw-icon:not(.jw-icon-fullscreen) {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-container">
+    <div class="live-badge">LIVE</div>
+  </div>
+
+  <script>
+    const player = jwplayer("player-container").setup({
+      file: "https://0fj.cc/DTMMBSTV",
+      type: "hls",
+      width: "100%",
+      height: "100%",
+      autostart: true,
+      mute: true,
+      displaytitle: true,
+      title: "DREAMSTAR TV",
+      controls: true,
+      stretching: "uniform", // Prevents zoom/crop
+      abouttext: "DREAMSTAR TV",
+      aboutlink: "https://dreamstartv.online"
+    });
+
+    // Disable keyboard shortcuts (optional)
+    document.addEventListener('keydown', function (e) {
+      e.stopPropagation();
+    }, true);
+  </script>
+</body>
+</html>
