@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DREAMSTAR TV</title>
   <script src="https://cdn.jwplayer.com/libraries/IDzF9Zmk.js"></script>
+
   <style>
     html, body {
       margin: 0;
@@ -12,6 +13,7 @@
       height: 100%;
       width: 100%;
       background: #000;
+      user-select: none; /* Prevent text selection */
     }
 
     #player-wrapper {
@@ -77,13 +79,14 @@
     }
   </style>
 </head>
-<body>
+<body oncontextmenu="return false">
   <div id="player-wrapper">
     <div class="live-badge">LIVE</div>
     <div id="player-container"></div>
   </div>
 
   <script>
+    // Setup player
     jwplayer("player-container").setup({
       file: "https://0fj.cc/DTMMBSTV",
       type: "hls",
@@ -99,10 +102,20 @@
       aboutlink: "https://dreamstartv.online"
     });
 
-    // Optional: Disable keyboard shortcuts
+    // Disable dev tools keys
     document.addEventListener('keydown', function (e) {
-      e.stopPropagation();
-    }, true);
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Optional: Disable text selection
+    document.addEventListener('selectstart', e => e.preventDefault());
   </script>
 </body>
 </html>
