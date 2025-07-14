@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAMSTAR TELERADIO PLAYER</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    iframe {
+      display: block;
+      border: none;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Disable common inspect shortcuts
+    document.onkeydown = function(e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        return false;
+      }
+    };
+  </script>
+</head>
+<body>
+  <iframe src="https://listen2.streamaudio.co/public/8010" allowfullscreen></iframe>
+</body>
+</html>
